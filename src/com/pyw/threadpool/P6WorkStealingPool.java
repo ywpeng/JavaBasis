@@ -8,17 +8,17 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
 /**
- * newWorkStealingPool£¨Õâ¸öÊÇÔÚjdk1.8³öÀ´µÄ£©»á¸ü¼ÓËùĞèµÄ²¢ĞĞ²ã´ÎÀ´¶¯Ì¬´´½¨ºÍ¹Ø±ÕÏß³Ì¡£ËüÍ¬Ñù»áÊÔÍ¼¼õÉÙÈÎÎñ¶ÓÁĞµÄ´óĞ¡£¬
- * ËùÒÔ±È½ÏÊÊÓÚ¸ß¸ºÔØµÄ»·¾³¡£Í¬ÑùÒ²±È½ÏÊÊÓÃÓÚµ±Ö´ĞĞµÄÈÎÎñ»á´´½¨¸ü¶àÈÎÎñ£¬Èçµİ¹éÈÎÎñ¡£ÊÊºÏÊ¹ÓÃÔÚºÜºÄÊ±µÄ²Ù×÷£¬
- * µ«ÊÇnewWorkStealingPool²»ÊÇThreadPoolExecutorµÄÀ©Õ¹£¬ËüÊÇĞÂµÄÏß³Ì³ØÀàForkJoinPoolµÄÀ©Õ¹£¬
- * µ«ÊÇ¶¼ÊÇÔÚÍ³Ò»µÄÒ»¸öExecutorsÀàÖĞÊµÏÖ£¬ÓÉÓÚÄÜ¹»ºÏÀíµÄÊ¹ÓÃCPU½øĞĞ¶ÔÈÎÎñ²Ù×÷£¨²¢ĞĞ²Ù×÷£©£¬ËùÒÔÊÊºÏÊ¹ÓÃÔÚºÜºÄÊ±µÄÈÎÎñÖĞ
+ * newWorkStealingPoolï¼ˆè¿™ä¸ªæ˜¯åœ¨jdk1.8å‡ºæ¥çš„ï¼‰ä¼šæ›´åŠ æ‰€éœ€çš„å¹¶è¡Œå±‚æ¬¡æ¥åŠ¨æ€åˆ›å»ºå’Œå…³é—­çº¿ç¨‹ã€‚å®ƒåŒæ ·ä¼šè¯•å›¾å‡å°‘ä»»åŠ¡é˜Ÿåˆ—çš„å¤§å°ï¼Œ
+ * æ‰€ä»¥æ¯”è¾ƒé€‚äºé«˜è´Ÿè½½çš„ç¯å¢ƒã€‚åŒæ ·ä¹Ÿæ¯”è¾ƒé€‚ç”¨äºå½“æ‰§è¡Œçš„ä»»åŠ¡ä¼šåˆ›å»ºæ›´å¤šä»»åŠ¡ï¼Œå¦‚é€’å½’ä»»åŠ¡ã€‚é€‚åˆä½¿ç”¨åœ¨å¾ˆè€—æ—¶çš„æ“ä½œï¼Œ
+ * ä½†æ˜¯newWorkStealingPoolä¸æ˜¯ThreadPoolExecutorçš„æ‰©å±•ï¼Œå®ƒæ˜¯æ–°çš„çº¿ç¨‹æ± ç±»ForkJoinPoolçš„æ‰©å±•ï¼Œ
+ * ä½†æ˜¯éƒ½æ˜¯åœ¨ç»Ÿä¸€çš„ä¸€ä¸ªExecutorsç±»ä¸­å®ç°ï¼Œç”±äºèƒ½å¤Ÿåˆç†çš„ä½¿ç”¨CPUè¿›è¡Œå¯¹ä»»åŠ¡æ“ä½œï¼ˆå¹¶è¡Œæ“ä½œï¼‰ï¼Œæ‰€ä»¥é€‚åˆä½¿ç”¨åœ¨å¾ˆè€—æ—¶çš„ä»»åŠ¡ä¸­
  * @author ASUS
  *
  */
 public class P6WorkStealingPool {
-	// Ïß³ÌÊı
+	// çº¿ç¨‹æ•°
     private static final int threads = 10;
-    // ÓÃÓÚ¼ÆÊıÏß³ÌÊÇ·ñÖ´ĞĞÍê³É
+    // ç”¨äºè®¡æ•°çº¿ç¨‹æ˜¯å¦æ‰§è¡Œå®Œæˆ
     CountDownLatch countDownLatch = new CountDownLatch(threads);
  
    // @Test
@@ -46,7 +46,7 @@ public class P6WorkStealingPool {
         System.out.println("---- start ----");
         ExecutorService executorService = Executors.newWorkStealingPool();
         for (int i = 0; i < threads; i++) {
-//            Callable ´ø·µ»ØÖµ
+//            Callable å¸¦è¿”å›å€¼
             executorService.submit(new Thread(() -> {
                 try {
                     System.out.println(Thread.currentThread().getName());
@@ -66,7 +66,7 @@ public class P6WorkStealingPool {
         System.out.println("---- start ----");
         ExecutorService executorService = Executors.newWorkStealingPool();
         for (int i = 0; i < threads; i++) {
-//          Runnable ´ø·µ»ØÖµ
+//          Runnable å¸¦è¿”å›å€¼
             FutureTask<?> futureTask = new FutureTask<>(new Callable<String>() {
                 /**
                  * call

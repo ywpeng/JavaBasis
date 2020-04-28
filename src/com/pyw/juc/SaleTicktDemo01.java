@@ -3,7 +3,7 @@ package com.pyw.juc;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-//×ÊÔ´Àà
+//èµ„æºç±»
 class Ticket{
 	private int number = 30;
 	
@@ -12,7 +12,7 @@ class Ticket{
 		lock.lock();
 		try {
 			if (number > 0) {
-				System.out.println(Thread.currentThread().getName() + "\t Âô³öµÚ" + (number--)+"ÕÅÆ±£¬»¹Ê£"+ number +"ÕÅÆ±");
+				System.out.println(Thread.currentThread().getName() + "\t å–å‡ºç¬¬" + (number--)+"å¼ ç¥¨ï¼Œè¿˜å‰©"+ number +"å¼ ç¥¨");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -25,23 +25,23 @@ class Ticket{
 public class SaleTicktDemo01 {
 
 	/**
-	 * ÒªÇó£ºÈý¸öÊÛÆ±Ô± 	Âô³ö 	30ÕÅÆ±
-	 * Ê¹ÓÃ¶àÏß³ÌÊµÏÖ
-	 * ¶àÏß³ÌµÄÊµÏÖÌÖÂÛ¡¢Ä£°å
+	 * è¦æ±‚ï¼šä¸‰ä¸ªå”®ç¥¨å‘˜ 	å–å‡º 	30å¼ ç¥¨
+	 * ä½¿ç”¨å¤šçº¿ç¨‹å®žçŽ°
+	 * å¤šçº¿ç¨‹çš„å®žçŽ°è®¨è®ºã€æ¨¡æ¿
 	 * 
-	 * 1.ÔÚ¸ßÄÚ¾ÛµÍñîºÏµÄÇ°ÌáÏÂ£¬ Ïß³Ì	²Ù×÷	×ÊÔ´Àà
-	 * 	1.1 ÏÈ´´½¨×ÊÔ´Àà
+	 * 1.åœ¨é«˜å†…èšä½Žè€¦åˆçš„å‰æä¸‹ï¼Œ çº¿ç¨‹	æ“ä½œ	èµ„æºç±»
+	 * 	1.1 å…ˆåˆ›å»ºèµ„æºç±»
 	 *  
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		Ticket ticket = new Ticket();
-		//·½Ê½Èý£ºÊ¹ÓÃ Lambada·½Ê½À´¼òÐ´
+		//æ–¹å¼ä¸‰ï¼šä½¿ç”¨ Lambadaæ–¹å¼æ¥ç®€å†™
 		new Thread(()->{for (int i = 1;i <= 30;i++) ticket.sale();},"A").start();
 		new Thread(()->{for (int i = 1;i <= 30;i++) ticket.sale();},"B").start();
 		new Thread(()->{for (int i = 1;i <= 30;i++) ticket.sale();},"C").start();
 		
-		//·½Ê½¶þ£ºÊ¹ÓÃÄäÃûÄÚ²¿ÀàµÄ·½Ê½ÊµÏÖ
+		//æ–¹å¼äºŒï¼šä½¿ç”¨åŒ¿åå†…éƒ¨ç±»çš„æ–¹å¼å®žçŽ°
 //		new Thread(new Runnable() {
 //			
 //			@Override
@@ -51,7 +51,7 @@ public class SaleTicktDemo01 {
 //					ticket.sale();
 //				}
 //			}
-//		},"AÊÛÆ±Ô±").start();
+//		},"Aå”®ç¥¨å‘˜").start();
 //		
 //		new Thread(new Runnable() {
 //			
@@ -62,7 +62,7 @@ public class SaleTicktDemo01 {
 //					ticket.sale();
 //				}
 //			}
-//		},"BÊÛÆ±Ô±").start();
+//		},"Bå”®ç¥¨å‘˜").start();
 //		
 //		
 //		new Thread(new Runnable() {
@@ -74,9 +74,9 @@ public class SaleTicktDemo01 {
 //					ticket.sale();
 //				}
 //			}
-//		},"CÊÛÆ±Ô±").start();
+//		},"Cå”®ç¥¨å‘˜").start();
 		
-		//·½Ê½Ò»£º³£¹æ·½Ê½ÏÂÐÂ½¨¶ÔÏó£¬ÈÃ¶ÔÏóÊµÏÖRunnable½Ó¿Ú£¬´úÂëÏ¸½ÚÂÔ¹ý
+		//æ–¹å¼ä¸€ï¼šå¸¸è§„æ–¹å¼ä¸‹æ–°å»ºå¯¹è±¡ï¼Œè®©å¯¹è±¡å®žçŽ°RunnableæŽ¥å£ï¼Œä»£ç ç»†èŠ‚ç•¥è¿‡
 //		Thread t1 = new Thread();
 //		Thread t2 = new Thread();
 //		Thread t3 = new Thread();

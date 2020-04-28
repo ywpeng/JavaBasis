@@ -18,25 +18,25 @@ class ShareDate{
 			
 			
 			if (p == 5) {
-				//1.�ж�
+				//1.判断
 				while(flag != 1) {
 					c1.await();
 				}
-				//2.�ɻ�
+				//2.干活
 				flag = 2;
 			} else if (p == 10) {
-				//1.�ж�
+				//1.判断
 				while(flag != 2) {
 					c2.await();
 				}
-				//2.�ɻ�
+				//2.干活
 				flag = 3;
 			} else if (p == 15) {
-				//1.�ж�
+				//1.判断
 				while(flag != 3) {
 					c3.await();
 				}
-				//2.�ɻ�
+				//2.干活
 				flag = 1;
 			}
 			
@@ -44,7 +44,7 @@ class ShareDate{
 				System.out.println(Thread.currentThread().getName() + "--" + i);
 			}
 			
-			//3.֪ͨ��������һ���߳�
+			//3.通知：唤醒下一个线程
 			if ((flag-1) == 1) {
 				c2.signal();
 			} else if ((flag-1) == 2) {
@@ -62,11 +62,11 @@ class ShareDate{
 	}
 }
 /**
- * ���̼߳��˳����ã�ʵ��A->B->C
+ * 多线程间的顺序调用，实现A->B->C
  * @author ASUS
- * �����߳�������Ҫ�����£�
- * AA��ӡ5�Σ�BB��ӡ10�Σ�CC��ӡ10��
- * ���ϲ����ظ�10��
+ * 三个线程启动后，要求如下：
+ * AA打印5次，BB打印10次，CC打印10次
+ * 以上操作重复10轮
  *
  */
 public class ConditionDemo {

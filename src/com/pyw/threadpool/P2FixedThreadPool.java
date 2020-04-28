@@ -4,22 +4,22 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /*
- * newFixedThreadPool ´´½¨Ò»¸ö¶¨³¤Ïß³Ì³Ø£¬¿É¿ØÖÆÏß³Ì×î´ó²¢·¢Êı£¬³¬³öµÄÏß³Ì»áÔÚ¶ÓÁĞÖĞµÈ´ı¡£
+ * newFixedThreadPool åˆ›å»ºä¸€ä¸ªå®šé•¿çº¿ç¨‹æ± ï¼Œå¯æ§åˆ¶çº¿ç¨‹æœ€å¤§å¹¶å‘æ•°ï¼Œè¶…å‡ºçš„çº¿ç¨‹ä¼šåœ¨é˜Ÿåˆ—ä¸­ç­‰å¾…ã€‚
  */
 public class P2FixedThreadPool {
 
 	public static void main(String[] args) {
-		//´´½¨Ò»¸ö¶¨³¤Ïß³Ì³Ø£¬¿É¿ØÖÆÏß³Ì×î´ó²¢·¢Êı£¬³¬³öµÄÏß³Ì»áÔÚ¶ÓÁĞÖĞµÈ´ı¡£
-		//¶¨³¤Ïß³Ì³ØµÄ´óĞ¡×îºÃ¸ù¾İÏµÍ³×ÊÔ´½øĞĞÉèÖÃ¡£ÈçRuntime.getRuntime().availableProcessors()
-		System.out.println("¶¨³¤Ïß³Ì³ØµÄ´óĞ¡×îºÃ¸ù¾İÏµÍ³×ÊÔ´½øĞĞÉèÖÃ:" + Runtime.getRuntime().availableProcessors());
+		//åˆ›å»ºä¸€ä¸ªå®šé•¿çº¿ç¨‹æ± ï¼Œå¯æ§åˆ¶çº¿ç¨‹æœ€å¤§å¹¶å‘æ•°ï¼Œè¶…å‡ºçš„çº¿ç¨‹ä¼šåœ¨é˜Ÿåˆ—ä¸­ç­‰å¾…ã€‚
+		//å®šé•¿çº¿ç¨‹æ± çš„å¤§å°æœ€å¥½æ ¹æ®ç³»ç»Ÿèµ„æºè¿›è¡Œè®¾ç½®ã€‚å¦‚Runtime.getRuntime().availableProcessors()
+		System.out.println("å®šé•¿çº¿ç¨‹æ± çš„å¤§å°æœ€å¥½æ ¹æ®ç³»ç»Ÿèµ„æºè¿›è¡Œè®¾ç½®:" + Runtime.getRuntime().availableProcessors());
 		
 		ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);
         for (int i = 0; i < 30; i++) {
             final int index = i;
             fixedThreadPool.execute(() -> {
                 try {
-                    System.out.println("Ïß³Ì" + index + "¿ªÊ¼Ö´ĞĞ");
-                    System.out.println("Ïß³Ì" + index + "Ë¯2s");
+                    System.out.println("çº¿ç¨‹" + index + "å¼€å§‹æ‰§è¡Œ");
+                    System.out.println("çº¿ç¨‹" + index + "ç¡2s");
                     Thread.sleep(2000);
                     
                 } catch (InterruptedException e) {

@@ -5,17 +5,17 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /*
- * newScheduledThreadPool ´´½¨Ò»¸ö¶¨³¤Ïß³Ì³Ø£¬Ö§³Ö¶¨Ê±¼°ÖÜÆÚÐÔÈÎÎñÖ´ÐÐ¡£
+ * newScheduledThreadPool åˆ›å»ºä¸€ä¸ªå®šé•¿çº¿ç¨‹æ± ï¼Œæ”¯æŒå®šæ—¶åŠå‘¨æœŸæ€§ä»»åŠ¡æ‰§è¡Œã€‚
  */
 public class P3ScheduledThreadPool {
 
 	public static void main(String[] args) {
 		ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);
-       //±íÊ¾ÑÓ³Ù3ÃëÖ´ÐÐ¡£
+       //è¡¨ç¤ºå»¶è¿Ÿ3ç§’æ‰§è¡Œã€‚
 		scheduledThreadPool.schedule(() -> System.out.println("delay 3 seconds"), 3, TimeUnit.SECONDS);
 		
-		//±íÊ¾ÑÓ³Ù1ÃëºóÃ¿3ÃëÖ´ÐÐÒ»´Î¡£
-		//ScheduledExecutorService±ÈTimer¸ü°²È«£¬¹¦ÄÜ¸üÇ¿´ó¡£
+		//è¡¨ç¤ºå»¶è¿Ÿ1ç§’åŽæ¯3ç§’æ‰§è¡Œä¸€æ¬¡ã€‚
+		//ScheduledExecutorServiceæ¯”Timeræ›´å®‰å…¨ï¼ŒåŠŸèƒ½æ›´å¼ºå¤§ã€‚
         scheduledThreadPool.scheduleAtFixedRate(() -> System.out.println("delay 1 seconds, and excute every 3 seconds"), 1, 3, TimeUnit.SECONDS);
 
 	}

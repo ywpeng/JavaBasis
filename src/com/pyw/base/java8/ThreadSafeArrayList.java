@@ -20,11 +20,11 @@ public class ThreadSafeArrayList {
 //		list.add("a");
 //		list.add("a");
 //		list.add("a");
-//		// ×¢ÒâJavaÖĞµÄÕâÖÖ   :: µÄĞ´·¨
+//		// æ³¨æ„Javaä¸­çš„è¿™ç§   :: çš„å†™æ³•
 //		list.forEach(System.out::println);
 		
-		//ArrayListÏß³Ì²»°²È«µÄÊ¾Àı
-			//»á·¢ÏÖÔÚÏß³ÌÀïĞ´ÁËÖ®ºó¶ÁµÄÇé¿ö£¬Ã¿´Î´òÓ¡¶¼²»Ò»Ñù
+		//ArrayListçº¿ç¨‹ä¸å®‰å…¨çš„ç¤ºä¾‹
+			//ä¼šå‘ç°åœ¨çº¿ç¨‹é‡Œå†™äº†ä¹‹åè¯»çš„æƒ…å†µï¼Œæ¯æ¬¡æ‰“å°éƒ½ä¸ä¸€æ ·
 //		List<String> list = new ArrayList<String>();
 //		for (int i = 0; i <= 3;i++) {
 //			new Thread(()->{
@@ -33,7 +33,7 @@ public class ThreadSafeArrayList {
 //			},String.valueOf(i)).start(); 
 //		}
 		
-//		//µ±´óÁ¿²¢·¢µÄÇé¿öÏÂµÄÊ±ºò»á±¨ ²¢·¢µÄÒì³££º java.util.ConcurrentModificationException
+//		//å½“å¤§é‡å¹¶å‘çš„æƒ…å†µä¸‹çš„æ—¶å€™ä¼šæŠ¥ å¹¶å‘çš„å¼‚å¸¸ï¼š java.util.ConcurrentModificationException
 //		List<String> list = new ArrayList<String>();
 //		for (int i = 0; i <= 30;i++) {
 //			new Thread(()->{
@@ -42,8 +42,8 @@ public class ThreadSafeArrayList {
 //			},String.valueOf(i)).start(); 
 //		}
 		
-		//½â¾ö·½°¸Ò»£ºÊ¹ÓÃVector¡£VectorÊÇÏß³Ì°²È«µÄ£¬µ±ĞÔÄÜµÍÒ»Ğ©£»ArrayListÊÇÏß³Ì²»°²È«µÄ£¬ĞÔÄÜ¸ßÒ»Ğ©
-			//È±µãÊÇ Vector °ÑÕû¸ö add·½·¨¶¼¼ÓËøÁË
+		//è§£å†³æ–¹æ¡ˆä¸€ï¼šä½¿ç”¨Vectorã€‚Vectoræ˜¯çº¿ç¨‹å®‰å…¨çš„ï¼Œå½“æ€§èƒ½ä½ä¸€äº›ï¼›ArrayListæ˜¯çº¿ç¨‹ä¸å®‰å…¨çš„ï¼Œæ€§èƒ½é«˜ä¸€äº›
+			//ç¼ºç‚¹æ˜¯ Vector æŠŠæ•´ä¸ª addæ–¹æ³•éƒ½åŠ é”äº†
 //		List<String> list = new Vector<String>();
 //		for (int i = 0; i <= 30;i++) {
 //			new Thread(()->{
@@ -52,7 +52,7 @@ public class ThreadSafeArrayList {
 //			},String.valueOf(i)).start(); 
 //		}
 		
-		//½â¾ö·½°¸¶ş£ºCollections.synchronizedList
+		//è§£å†³æ–¹æ¡ˆäºŒï¼šCollections.synchronizedList
 //		List<String> list = Collections.synchronizedList(new ArrayList<>());
 //		for (int i = 0; i <= 30;i++) {
 //			new Thread(()->{
@@ -61,7 +61,7 @@ public class ThreadSafeArrayList {
 //			},String.valueOf(i)).start(); 
 //		}
 		
-		//½â¾ö·½°¸Èı£ºĞ´Ê±¸´ÖÆ¼¼Êõ 
+		//è§£å†³æ–¹æ¡ˆä¸‰ï¼šå†™æ—¶å¤åˆ¶æŠ€æœ¯ 
 		List<String> list = new CopyOnWriteArrayList<String>();
 		for (int i = 0; i <= 30;i++) {
 			new Thread(()->{
@@ -70,7 +70,7 @@ public class ThreadSafeArrayList {
 			},String.valueOf(i)).start(); 
 		}
 		
-		//HashSetµÄÏß³Ì°²È«´¦Àí·½·¨
+		//HashSetçš„çº¿ç¨‹å®‰å…¨å¤„ç†æ–¹æ³•
 		Set<String> set = new CopyOnWriteArraySet<String>();
 		for (int i = 0; i <= 30;i++) {
 			new Thread(()->{
@@ -79,7 +79,7 @@ public class ThreadSafeArrayList {
 			},String.valueOf(i)).start(); 
 		}
 		
-		//HashMapµÄÏß³Ì°²È«´¦Àí·½°¸
+		//HashMapçš„çº¿ç¨‹å®‰å…¨å¤„ç†æ–¹æ¡ˆ
 		Map<String,String> map = new ConcurrentHashMap();
 		for (int i = 0; i <= 30;i++) {
 			new Thread(()->{

@@ -25,22 +25,22 @@ class MyThread implements Callable<Integer> {
 }
 
 /**
- * Ê¹ÓÃCallable ½Ó¿ÚÊµÏÖ¶àÏß³Ì
+ * ä½¿ç”¨Callable æ¥å£å®ç°å¤šçº¿ç¨‹
  * @author ASUS
  *
  */
 public class CallableDemo {
 
 	public static void main(String[] args) {
-//		//1.JDK8 ÒÔÇ°µÄÊµÏÖ·½Ê½
-//		//Ê¹ÓÃÊµÏÖ Runnable ½Ó¿ÚµÄ·½Ê½ÊµÏÖ
+//		//1.JDK8 ä»¥å‰çš„å®ç°æ–¹å¼
+//		//ä½¿ç”¨å®ç° Runnable æ¥å£çš„æ–¹å¼å®ç°
 //		MyThread1 myThread = new MyThread1();
 //		Thread thread1 = new Thread(myThread,"A");
 //		Thread thread2 = new Thread(myThread,"B");
 //		thread1.start();
 //		thread2.start();
 //		
-//		//2.Ê¹ÓÃ Lambada±í´ïÊ½µÄ·½Ê½ÊµÏÖ
+//		//2.ä½¿ç”¨ Lambadaè¡¨è¾¾å¼çš„æ–¹å¼å®ç°
 //		new Thread(()->{
 //			System.out.println(Thread.currentThread().getName() + "  do something...");
 //		},"A").start();
@@ -49,8 +49,8 @@ public class CallableDemo {
 //			System.out.println(Thread.currentThread().getName() + "  do something...");
 //		},"B").start();
 		
-		//3.Ê¹ÓÃ CallableµÄÊµÏÖ·½Ê½
-		// ¸Ã·½Ê½ÏÂ¿ÉÒÔ»ñÈ¡µ½Ïß³ÌÖ´ĞĞµÄ·µ»ØÖµ£¬ÊÇ·ñÖ´ĞĞÍê³ÉµÈĞÅÏ¢
+		//3.ä½¿ç”¨ Callableçš„å®ç°æ–¹å¼
+		// è¯¥æ–¹å¼ä¸‹å¯ä»¥è·å–åˆ°çº¿ç¨‹æ‰§è¡Œçš„è¿”å›å€¼ï¼Œæ˜¯å¦æ‰§è¡Œå®Œæˆç­‰ä¿¡æ¯
 		
 		FutureTask<Integer> futureTask1 = new FutureTask<Integer>(new MyThread());
 		FutureTask<Integer> futureTask2 = new FutureTask<Integer>(new MyThread());
@@ -63,11 +63,11 @@ public class CallableDemo {
 		try {
 			
 			Integer r1 = futureTask1.get();
-			System.out.println("µ÷ÓÃÖ®ºóAµÄ·µ»Ø½á¹û£º" + r1 );
+			System.out.println("è°ƒç”¨ä¹‹åAçš„è¿”å›ç»“æœï¼š" + r1 );
 			Integer r2 = futureTask2.get();
-			System.out.println("µ÷ÓÃÖ®ºóBµÄ·µ»Ø½á¹û£º" + r2 );
+			System.out.println("è°ƒç”¨ä¹‹åBçš„è¿”å›ç»“æœï¼š" + r2 );
 			Integer r3 = futureTask3.get();
-			System.out.println("µ÷ÓÃÖ®ºóCµÄ·µ»Ø½á¹û£º" + r3 );
+			System.out.println("è°ƒç”¨ä¹‹åCçš„è¿”å›ç»“æœï¼š" + r3 );
 			
 		} catch (InterruptedException | ExecutionException e) {
 			// TODO Auto-generated catch block

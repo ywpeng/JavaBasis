@@ -5,14 +5,14 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * Éú²úÕßÏû·ÑÕßÄ£Ê½µÄÊ¾Àý
+ * ç”Ÿäº§è€…æ¶ˆè´¹è€…æ¨¡å¼çš„ç¤ºä¾‹
  * @author ASUS
- *ÒªÇó£ºÁ½¸öÏß³Ì£¬¿ÉÒÔ²Ù×÷³õÊ¼ÖµÎª0µÄÒ»¸ö±äÁ¿
- *Ò»¸öÏß³Ì¶ÔÆä¼Ó£¬Ò»¸öÏß³Ì¼õ
- *½»ÌæÊµÏÖ£¬¹²10ÂÖ
- *	1	¸ßÄÚ¾ÛµÍñîºÏ£¬Ïß³Ì²Ù×÷×ÊÔ´Àà
- *	2	ÅÐ¶Ï/¸É»î/Í¨Öª
- *	3	·ÀÖ¹Ðé¼Ù»½ÐÑ
+ *è¦æ±‚ï¼šä¸¤ä¸ªçº¿ç¨‹ï¼Œå¯ä»¥æ“ä½œåˆå§‹å€¼ä¸º0çš„ä¸€ä¸ªå˜é‡
+ *ä¸€ä¸ªçº¿ç¨‹å¯¹å…¶åŠ ï¼Œä¸€ä¸ªçº¿ç¨‹å‡
+ *äº¤æ›¿å®žçŽ°ï¼Œå…±10è½®
+ *	1	é«˜å†…èšä½Žè€¦åˆï¼Œçº¿ç¨‹æ“ä½œèµ„æºç±»
+ *	2	åˆ¤æ–­/å¹²æ´»/é€šçŸ¥
+ *	3	é˜²æ­¢è™šå‡å”¤é†’
  */
 
 class Bun{
@@ -24,13 +24,13 @@ class Bun{
 		lock.lock();
 		try {
 			while (num != 0) {
-				System.out.println(Thread.currentThread().getName()+"·¢ÏÖÓÐ°ü×Ó£¬ÏÈÐÝÏ¢");
-				condition.await(); //Ê¹ÓÃwait·½·¨Ê±£¬ÐèÒªÓÃ while×÷ÎªÅÐ¶ÏÌõ¼þ£¬·ÀÖ¹Ðé¼Ù»½ÐÑ
+				System.out.println(Thread.currentThread().getName()+"å‘çŽ°æœ‰åŒ…å­ï¼Œå…ˆä¼‘æ¯");
+				condition.await(); //ä½¿ç”¨waitæ–¹æ³•æ—¶ï¼Œéœ€è¦ç”¨ whileä½œä¸ºåˆ¤æ–­æ¡ä»¶ï¼Œé˜²æ­¢è™šå‡å”¤é†’
 			}
-			//2.¸É»î
-			num++;//ÖÆÔì°ü×Ó
-			System.out.println(Thread.currentThread().getName()+"ÖÆÔìÁËÒ»¸ö°ü×Ó" + num);
-			//3.Í¨Öª
+			//2.å¹²æ´»
+			num++;//åˆ¶é€ åŒ…å­
+			System.out.println(Thread.currentThread().getName()+"åˆ¶é€ äº†ä¸€ä¸ªåŒ…å­" + num);
+			//3.é€šçŸ¥
 		}catch(Exception e) {
 			
 		}finally {
@@ -43,15 +43,15 @@ class Bun{
 	public  void decrement() throws Exception {
 		lock.lock();
 		try {
-			//1.ÅÐ¶Ï
+			//1.åˆ¤æ–­
 			if (num == 0) {
 				//this.wait();
 				condition.await();
 			}
-			//2.¸É»î
-			num--;//ÖÆÔì°ü×Ó
-			System.out.println(Thread.currentThread().getName()+"Ïû·ÑÁËÒ»¸ö°ü×Ó" + num);
-			//3.Í¨Öª
+			//2.å¹²æ´»
+			num--;//åˆ¶é€ åŒ…å­
+			System.out.println(Thread.currentThread().getName()+"æ¶ˆè´¹äº†ä¸€ä¸ªåŒ…å­" + num);
+			//3.é€šçŸ¥
 			//this.notifyAll();
 			condition.signalAll();
 			
@@ -63,32 +63,32 @@ class Bun{
 }
 	
 	/*
-	//ÖÆÔì°ü×Ó
+	//åˆ¶é€ åŒ…å­
 	public synchronized void increment() throws Exception {
-		System.out.println(Thread.currentThread().getName()+"½ø°ü×Ó·¿ÁË");
-		//1.ÅÐ¶Ï
+		System.out.println(Thread.currentThread().getName()+"è¿›åŒ…å­æˆ¿äº†");
+		//1.åˆ¤æ–­
 		while (num != 0) {
 //		if (num != 0) {
-			System.out.println(Thread.currentThread().getName()+"·¢ÏÖÓÐ°ü×Ó£¬ÏÈÐÝÏ¢");
-			this.wait();//Ê¹ÓÃwait·½·¨Ê±£¬ÐèÒªÓÃ while×÷ÎªÅÐ¶ÏÌõ¼þ£¬·ÀÖ¹Ðé¼Ù»½ÐÑ
+			System.out.println(Thread.currentThread().getName()+"å‘çŽ°æœ‰åŒ…å­ï¼Œå…ˆä¼‘æ¯");
+			this.wait();//ä½¿ç”¨waitæ–¹æ³•æ—¶ï¼Œéœ€è¦ç”¨ whileä½œä¸ºåˆ¤æ–­æ¡ä»¶ï¼Œé˜²æ­¢è™šå‡å”¤é†’
 		}
-		//2.¸É»î
-		num++;//ÖÆÔì°ü×Ó
-		System.out.println(Thread.currentThread().getName()+"ÖÆÔìÁËÒ»¸ö°ü×Ó" + num);
-		//3.Í¨Öª
+		//2.å¹²æ´»
+		num++;//åˆ¶é€ åŒ…å­
+		System.out.println(Thread.currentThread().getName()+"åˆ¶é€ äº†ä¸€ä¸ªåŒ…å­" + num);
+		//3.é€šçŸ¥
 		this.notifyAll();
 	}
 	
-	//Ïû·Ñ°ü×Ó
+	//æ¶ˆè´¹åŒ…å­
 	public synchronized void decrement() throws Exception {
-			//1.ÅÐ¶Ï
+			//1.åˆ¤æ–­
 			while (num == 0) {
 				this.wait();
 			}
-			//2.¸É»î
-			num--;//ÖÆÔì°ü×Ó
-			System.out.println(Thread.currentThread().getName()+"Ïû·ÑÁËÒ»¸ö°ü×Ó" + num);
-			//3.Í¨Öª
+			//2.å¹²æ´»
+			num--;//åˆ¶é€ åŒ…å­
+			System.out.println(Thread.currentThread().getName()+"æ¶ˆè´¹äº†ä¸€ä¸ªåŒ…å­" + num);
+			//3.é€šçŸ¥
 			this.notifyAll();
 	}
 	*/
@@ -98,7 +98,7 @@ public class ProdConsumerDemo {
 	public static void main(String[] args) {
 		Bun b = new Bun();
 		
-		//ÖÆÔìµÄÏß³Ì
+		//åˆ¶é€ çš„çº¿ç¨‹
 		new Thread(() -> {
 			for (int i = 0; i <= 10;i++) {
 				try {
@@ -111,7 +111,7 @@ public class ProdConsumerDemo {
 			}
 		},"A").start();
 		
-		//Ïû·ÑµÄÏß³Ì
+		//æ¶ˆè´¹çš„çº¿ç¨‹
 		new Thread(() -> {
 			try {
 				for (int i = 0; i <= 10;i++) {
@@ -125,7 +125,7 @@ public class ProdConsumerDemo {
 		},"B").start();
 		
 		
-		//ÔÙ¼ÓÒ»¸ö  ÖÆÔìµÄÏß³Ì
+		//å†åŠ ä¸€ä¸ª  åˆ¶é€ çš„çº¿ç¨‹
 		new Thread(() -> {
 			for (int i = 0; i <= 10;i++) {
 				try {

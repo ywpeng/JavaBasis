@@ -1,14 +1,14 @@
 package com.pyw.base.java8;
 
-//@FunctionalInterface  //º¯ÊýÊ½½Ó¿ÚµÄÉêÃ÷µÄ×¢½â¡£Èç¹û¼ÓÉÏÁË¸Ã×¢½â£¬½Ó¿ÚÀïµÄ·½·¨¾ÍÖ»ÄÜÓÐÒ»¸ö£¬·ñÔò»á±¨´í¡£
+//@FunctionalInterface  //å‡½æ•°å¼æŽ¥å£çš„ç”³æ˜Žçš„æ³¨è§£ã€‚å¦‚æžœåŠ ä¸Šäº†è¯¥æ³¨è§£ï¼ŒæŽ¥å£é‡Œçš„æ–¹æ³•å°±åªèƒ½æœ‰ä¸€ä¸ªï¼Œå¦åˆ™ä¼šæŠ¥é”™ã€‚
 interface Foo{
-	//º¯ÊýÊ½±à³ÌÖÐ½Ó¿ÚÓÐÇÒÖ»ÄÜ¶¨ÒåÒ»¸ö·½·¨
+	//å‡½æ•°å¼ç¼–ç¨‹ä¸­æŽ¥å£æœ‰ä¸”åªèƒ½å®šä¹‰ä¸€ä¸ªæ–¹æ³•
 	//public void sayHello();
 	public int add(int i,int j);
 	
 	public default int mul(int i,int j) {
 		return i * j;
-	}
+	} 
 	
 	public default int mul2(int i) {
 		return i * i;
@@ -22,23 +22,23 @@ interface Foo{
 /**
  * 
  * @author ASUS
- *1.º¯ÊýÊ½±à³Ì
- *  ¿½±´ÖÐÀ¨ºÅ
- *  Ð´ËÀÓÒ¼ýÍ·
- *  ÂäµØ´óÀ¨ºÅ
+ *1.å‡½æ•°å¼ç¼–ç¨‹
+ *  æ‹·è´ä¸­æ‹¬å·
+ *  å†™æ­»å³ç®­å¤´
+ *  è½åœ°å¤§æ‹¬å·
  *  
  *  2.@FunctionalInterface
  *  
- *  3.jdk8 ÐÂÌØÐÔÖÐ default µÄÊ¹ÓÃ:½Ó¿ÚÖÐ¿ÉÒÔÓÐdefaultµÄ·½·¨Ìå£¬²¢ÇÒ¿ÉÒÔÓÐ¶à¸ö
+ *  3.jdk8 æ–°ç‰¹æ€§ä¸­ default çš„ä½¿ç”¨:æŽ¥å£ä¸­å¯ä»¥æœ‰defaultçš„æ–¹æ³•ä½“ï¼Œå¹¶ä¸”å¯ä»¥æœ‰å¤šä¸ª
  *  
- *  4.jdk8 ÐÂÌØÐÔÖÐ static µÄÊ¹ÓÃ:½Ó¿ÚÖÐ¿ÉÒÔÓÐ static µÄ·½·¨Ìå£¬²¢ÇÒ¿ÉÒÔÓÐ¶à¸ö
+ *  4.jdk8 æ–°ç‰¹æ€§ä¸­ static çš„ä½¿ç”¨:æŽ¥å£ä¸­å¯ä»¥æœ‰ static çš„æ–¹æ³•ä½“ï¼Œå¹¶ä¸”å¯ä»¥æœ‰å¤šä¸ª
  */
 public class LambadaDemo {
 
 	public static void main(String[] args) {
 			
 		
-		//·½Ê½Ò»£ºÄäÃûÄÚ²¿Àà
+		//æ–¹å¼ä¸€ï¼šåŒ¿åå†…éƒ¨ç±»
 //		Foo foo = new Foo() {			
 //			@Override
 //			public void sayHello() {
@@ -47,7 +47,7 @@ public class LambadaDemo {
 //			}
 //		};
 		
-		//·½Ê½¶þ£ºLambadaµÄ·½Ê½¼òÐ´£¬½â¾öÄäÃûÄÚ²¿Àà´úÂëÈßÓàµÄÎÊÌâ
+		//æ–¹å¼äºŒï¼šLambadaçš„æ–¹å¼ç®€å†™ï¼Œè§£å†³åŒ¿åå†…éƒ¨ç±»ä»£ç å†—ä½™çš„é—®é¢˜
 //		Foo foo = () -> {
 //			System.out.println("Hello ");
 //		};

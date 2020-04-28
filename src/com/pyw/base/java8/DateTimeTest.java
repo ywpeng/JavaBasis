@@ -22,28 +22,28 @@ public class DateTimeTest {
 		t.getFormateDate();
 	}
 
-	/*±³¾°
-	 * Java¶ÔÈÕÆÚ¡¢ÈÕÀú¼°Ê±¼äµÄ´¦ÀíÒ»Ö±ÒÔÀ´¶¼±¥ÊÜÚ¸²¡£¬±ÈÈçjava.util.DateºÍjava.util.CalendarÀàÒ×ÓÃĞÔ²î£¬²»Ö§³ÖÊ±Çø£¬·ÇÏß³Ì°²È«£»»¹ÓĞÓÃÓÚ¸ñÊ½»¯ÈÕÆÚµÄÀàDateFormatÒ²ÊÇ·ÇÏß³Ì°²È«µÄµÈÎÊÌâ¡£
-Java8ÒıÈëµÄĞÂµÄÒ»ÏµÁĞAPI£¬¶ÔÊ±¼äÈÕÆÚµÄ´¦ÀíÌá¹©ÁË¸üºÃµÄÖ§³Ö£¬Çå³şµÄ¶¨ÒåÁËÊ±¼äÈÕÆÚµÄÒ»Ğ©¸ÅÄî£¬±ÈÈçËµ£¬Ë²Ê±Ê±¼ä£¨Instant£©,³ÖĞøÊ±¼ä£¨duration£©£¬ÈÕÆÚ£¨date£©,Ê±¼ä£¨time£©£¬Ê±Çø£¨time-zone£©ÒÔ¼°Ê±¼ä¶Î£¨Period£©¡£
-Í¬Ê±£¬½è¼øÁËJoda¿âµÄÒ»Ğ©ÓÅµã£¬±ÈÈç½«ÈËºÍ»úÆ÷¶ÔÊ±¼äÈÕÆÚµÄÀí½âÇø·Ö¿ªµÄ¡£
+	/*èƒŒæ™¯
+	 * Javaå¯¹æ—¥æœŸã€æ—¥å†åŠæ—¶é—´çš„å¤„ç†ä¸€ç›´ä»¥æ¥éƒ½é¥±å—è¯Ÿç—…ï¼Œæ¯”å¦‚java.util.Dateå’Œjava.util.Calendarç±»æ˜“ç”¨æ€§å·®ï¼Œä¸æ”¯æŒæ—¶åŒºï¼Œéçº¿ç¨‹å®‰å…¨ï¼›è¿˜æœ‰ç”¨äºæ ¼å¼åŒ–æ—¥æœŸçš„ç±»DateFormatä¹Ÿæ˜¯éçº¿ç¨‹å®‰å…¨çš„ç­‰é—®é¢˜ã€‚
+Java8å¼•å…¥çš„æ–°çš„ä¸€ç³»åˆ—APIï¼Œå¯¹æ—¶é—´æ—¥æœŸçš„å¤„ç†æä¾›äº†æ›´å¥½çš„æ”¯æŒï¼Œæ¸…æ¥šçš„å®šä¹‰äº†æ—¶é—´æ—¥æœŸçš„ä¸€äº›æ¦‚å¿µï¼Œæ¯”å¦‚è¯´ï¼Œç¬æ—¶æ—¶é—´ï¼ˆInstantï¼‰,æŒç»­æ—¶é—´ï¼ˆdurationï¼‰ï¼Œæ—¥æœŸï¼ˆdateï¼‰,æ—¶é—´ï¼ˆtimeï¼‰ï¼Œæ—¶åŒºï¼ˆtime-zoneï¼‰ä»¥åŠæ—¶é—´æ®µï¼ˆPeriodï¼‰ã€‚
+åŒæ—¶ï¼Œå€Ÿé‰´äº†Jodaåº“çš„ä¸€äº›ä¼˜ç‚¹ï¼Œæ¯”å¦‚å°†äººå’Œæœºå™¨å¯¹æ—¶é—´æ—¥æœŸçš„ç†è§£åŒºåˆ†å¼€çš„ã€‚
 	 */
 	
 	/*
-	 * ¼ò½é
-ĞÂµÄÊ±¼äÈÕÆÚAPIºËĞÄÎ»ÓÚjava.timeÄÚ£¬ÁíÍâÒ²ÔÚjava.time.chrono£¬java.time.format£¬java.time.temporalºÍjava.time.zoneÓĞÏà¹ØµÄAPI£¬µ«Ê¹ÓÃÆµ´Î½ÏÉÙ¡£
-Java8³£ÓÃµÄÈÕÆÚºÍÊ±¼äÀà°üº¬LocalDate¡¢LocalTime¡¢Instant¡¢Duration¡¢Period¡¢LocalDateTimeÒÔ¼°ZonedDateTimeµÈ¡£
-LocalDate£º²»°üº¬Ê±¼äµÄÈÕÆÚ£¬±ÈÈç2019-10-14¡£¿ÉÒÔÓÃÀ´´æ´¢ÉúÈÕ£¬ÖÜÄê¼ÍÄîÈÕ£¬ÈëÖ°ÈÕÆÚµÈ¡£
-LocalTime£ºÓëLocalDateÏë¶ÔÕÕ£¬ËüÊÇ²»°üº¬ÈÕÆÚµÄÊ±¼ä¡£
-LocalDateTime£º°üº¬ÁËÈÕÆÚ¼°Ê±¼ä£¬Ã»ÓĞÆ«ÒÆĞÅÏ¢£¨Ê±Çø£©¡£
-ZonedDateTime£º°üº¬Ê±ÇøµÄÍêÕûµÄÈÕÆÚÊ±¼ä£¬Æ«ÒÆÁ¿ÊÇÒÔUTC/¸ñÁÖÍşÖÎÊ±¼äÎª»ù×¼µÄ¡£
-Instant£ºÊ±¼ä´Á£¬ÓëSystem.currentTimeMillis()ÀàËÆ¡£
-Duration£º±íÊ¾Ò»¸öÊ±¼ä¶Î¡£
-Period£ºÓÃÀ´±íÊ¾ÒÔÄêÔÂÈÕÀ´ºâÁ¿Ò»¸öÊ±¼ä¶Î¡£
-ÁíÍâ£¬»¹ÓĞĞÂµÄÈÕÆÚ½âÎö¸ñÊ½»¯ÀàDateTimeFormatter¡£
+	 * ç®€ä»‹
+æ–°çš„æ—¶é—´æ—¥æœŸAPIæ ¸å¿ƒä½äºjava.timeå†…ï¼Œå¦å¤–ä¹Ÿåœ¨java.time.chronoï¼Œjava.time.formatï¼Œjava.time.temporalå’Œjava.time.zoneæœ‰ç›¸å…³çš„APIï¼Œä½†ä½¿ç”¨é¢‘æ¬¡è¾ƒå°‘ã€‚
+Java8å¸¸ç”¨çš„æ—¥æœŸå’Œæ—¶é—´ç±»åŒ…å«LocalDateã€LocalTimeã€Instantã€Durationã€Periodã€LocalDateTimeä»¥åŠZonedDateTimeç­‰ã€‚
+LocalDateï¼šä¸åŒ…å«æ—¶é—´çš„æ—¥æœŸï¼Œæ¯”å¦‚2019-10-14ã€‚å¯ä»¥ç”¨æ¥å­˜å‚¨ç”Ÿæ—¥ï¼Œå‘¨å¹´çºªå¿µæ—¥ï¼Œå…¥èŒæ—¥æœŸç­‰ã€‚
+LocalTimeï¼šä¸LocalDateæƒ³å¯¹ç…§ï¼Œå®ƒæ˜¯ä¸åŒ…å«æ—¥æœŸçš„æ—¶é—´ã€‚
+LocalDateTimeï¼šåŒ…å«äº†æ—¥æœŸåŠæ—¶é—´ï¼Œæ²¡æœ‰åç§»ä¿¡æ¯ï¼ˆæ—¶åŒºï¼‰ã€‚
+ZonedDateTimeï¼šåŒ…å«æ—¶åŒºçš„å®Œæ•´çš„æ—¥æœŸæ—¶é—´ï¼Œåç§»é‡æ˜¯ä»¥UTC/æ ¼æ—å¨æ²»æ—¶é—´ä¸ºåŸºå‡†çš„ã€‚
+Instantï¼šæ—¶é—´æˆ³ï¼Œä¸System.currentTimeMillis()ç±»ä¼¼ã€‚
+Durationï¼šè¡¨ç¤ºä¸€ä¸ªæ—¶é—´æ®µã€‚
+Periodï¼šç”¨æ¥è¡¨ç¤ºä»¥å¹´æœˆæ—¥æ¥è¡¡é‡ä¸€ä¸ªæ—¶é—´æ®µã€‚
+å¦å¤–ï¼Œè¿˜æœ‰æ–°çš„æ—¥æœŸè§£ææ ¼å¼åŒ–ç±»DateTimeFormatterã€‚
 	 */
 	
 	/**
-	 * »ñÈ¡ÈÕÆÚ
+	 * è·å–æ—¥æœŸ
 	 */
 	public void getLocalDate() {
 		LocalDate today = LocalDate.now();
@@ -55,16 +55,16 @@ Period£ºÓÃÀ´±íÊ¾ÒÔÄêÔÂÈÕÀ´ºâÁ¿Ò»¸öÊ±¼ä¶Î¡£
 
 		System.out.printf("Year : %d Month : %d day : %d \t %n", year, month, day);
 		
-		// ÔÂ·İÖĞµÄµÚ¼¸Ìì
+		// æœˆä»½ä¸­çš„ç¬¬å‡ å¤©
 		int dayOfMonth = today.getDayOfMonth();
-		// Ò»ÖÜµÄµÚ¼¸Ìì
+		// ä¸€å‘¨çš„ç¬¬å‡ å¤©
 		DayOfWeek dayOfWeek = today.getDayOfWeek();
-		// ÔÂ·İµÄÌìÊı
+		// æœˆä»½çš„å¤©æ•°
 		int length = today.lengthOfMonth();
-		// ÊÇ·ñÎªÈòÄê
+		// æ˜¯å¦ä¸ºé—°å¹´
 		boolean leapYear = today.isLeapYear();
 
-		//´´½¨ÈÎÒâÈÕÆÚ
+		//åˆ›å»ºä»»æ„æ—¥æœŸ
 		LocalDate oneDay = LocalDate.of(2019,10,1);
 		System.out.println(oneDay);
 
@@ -73,142 +73,142 @@ Period£ºÓÃÀ´±íÊ¾ÒÔÄêÔÂÈÕÀ´ºâÁ¿Ò»¸öÊ±¼ä¶Î¡£
 	}
 	
 	/**
-	 * ÈÕÆÚ±È½Ï
+	 * æ—¥æœŸæ¯”è¾ƒ
 	 */
 	public void compareDate() {
-		//LocalDateÖØĞ´ÁËequals·½·¨£¬ÈÃÈÕÆÚµÄ±È½ÏÒ²±äµÃ¼òµ¥ÁË¡£
-		//Í¬Ê±£¬Õë¶ÔÈÕÆÚ»¹¿ÉÑÓÉì³öMonthDay»òYearMonthÀà£¬¹ËÃûË¼Òå£¬Ö»°üº¬ÔÂÌì»òÄêÔÂ¡£Í¬ÑùÊÊÓÃÓÚequals·½·¨À´±È½Ï¡£
-		// ¶¨ÒåÈÎÒâÈÕÆÚ
+		//LocalDateé‡å†™äº†equalsæ–¹æ³•ï¼Œè®©æ—¥æœŸçš„æ¯”è¾ƒä¹Ÿå˜å¾—ç®€å•äº†ã€‚
+		//åŒæ—¶ï¼Œé’ˆå¯¹æ—¥æœŸè¿˜å¯å»¶ä¼¸å‡ºMonthDayæˆ–YearMonthç±»ï¼Œé¡¾åæ€ä¹‰ï¼ŒåªåŒ…å«æœˆå¤©æˆ–å¹´æœˆã€‚åŒæ ·é€‚ç”¨äºequalsæ–¹æ³•æ¥æ¯”è¾ƒã€‚
+		// å®šä¹‰ä»»æ„æ—¥æœŸ
 		LocalDate oneDay = LocalDate.of(2019, 10, 1);
 		System.out.println(oneDay);
 
-		// ¶¨ÒåÈÎÒâ±È½Ï
+		// å®šä¹‰ä»»æ„æ¯”è¾ƒ
 		LocalDate anyDay = LocalDate.of(2019, 10, 1);
 		System.out.println(oneDay.equals(anyDay));
 		
-		//ÁíÍâÊ¹ÓÃbeforeºÍafter¿ÉÒÔ±È½ÏÁ½¸öÈÕÆÚÇ°ºóÊ±¼ä¡£
+		//å¦å¤–ä½¿ç”¨beforeå’Œafterå¯ä»¥æ¯”è¾ƒä¸¤ä¸ªæ—¥æœŸå‰åæ—¶é—´ã€‚
 		boolean notBefore = LocalDate.parse("2019-10-01").isBefore(LocalDate.parse("2019-10-02"));
 		boolean isAfter = LocalDate.parse("2019-10-01").isAfter(LocalDate.parse("2019-10-02"));
 			
 	}
 	
 	/**
-	 * ÈÕÆÚµÄÇ°ÍÆ¡¢ºóÍÆ ²Ù×÷
+	 * æ—¥æœŸçš„å‰æ¨ã€åæ¨ æ“ä½œ
 	 */
 	public void getABDate() {
-		//¶ÔÈÕÆÚ½øĞĞÇ°Ò»ÌìºóÒ»Ìì»òÇ°Ò»¸öÔÂµÄ¼Ó¼õÒ²±äµÃÊ®·Ö·½±ã¡£
+		//å¯¹æ—¥æœŸè¿›è¡Œå‰ä¸€å¤©åä¸€å¤©æˆ–å‰ä¸€ä¸ªæœˆçš„åŠ å‡ä¹Ÿå˜å¾—ååˆ†æ–¹ä¾¿ã€‚
 		LocalDate tomorrowDay = LocalDate.now().plusDays(1);
 		LocalDate nextMonth =  LocalDate.now().plusMonths(1);
 		
-		//Òª»ñÈ¡Ä³Ò»ÌìµÄ¿ªÊ¼Ê±¼äºÍµ±ÌìËùÔÚÔÂµÄµÚÒ»ÌìµÈ¡£
+		//è¦è·å–æŸä¸€å¤©çš„å¼€å§‹æ—¶é—´å’Œå½“å¤©æ‰€åœ¨æœˆçš„ç¬¬ä¸€å¤©ç­‰ã€‚
 		LocalDate.now().atStartOfDay();
 		LocalDate.now().with(TemporalAdjusters.firstDayOfMonth());
 	}
 	
 	/**
-	 * »ñÈ¡Ê±¼ä
+	 * è·å–æ—¶é—´
 	 */
 	public void getTime() {
-		//LocalTimeºÍLocalDateÀàËÆ£¬Çø±ğÔÚÓÚLocalDate²»°üº¬¾ßÌåÊ±¼ä£¬¶øLocalTime°üº¬¾ßÌåÊ±¼ä¡£Í¬Ñù¿ÉÒÔÊ¹ÓÃnow»òof·½·¨À´»ñµÃ¶ÔÏó¡£
+		//LocalTimeå’ŒLocalDateç±»ä¼¼ï¼ŒåŒºåˆ«åœ¨äºLocalDateä¸åŒ…å«å…·ä½“æ—¶é—´ï¼Œè€ŒLocalTimeåŒ…å«å…·ä½“æ—¶é—´ã€‚åŒæ ·å¯ä»¥ä½¿ç”¨nowæˆ–ofæ–¹æ³•æ¥è·å¾—å¯¹è±¡ã€‚
 		LocalTime localTime = LocalTime.now();
 
 		LocalTime oneTime = LocalTime.of(10,10,10);
-		//LocalDateÀàËÆËüÒ²ÓµÓĞparse¡¢isBefore¡¢»ñÈ¡Ê±¼äµ¥ÔªµÈ·½·¨£¬¾Í²»ÔÙ×¸Êö¡£
-		//ĞèÒª×¢ÒâµÄÊÇ£¬LocalTime»ñµÃµÄÊ±¼ä¸ñÊ½Îª£º11:41:58.904¡£Ò²¾ÍÊÇ£¬HH:mm:ss.nnn£¬ÕâÀïnnnÊÇÄÉÃë¡£
+		//LocalDateç±»ä¼¼å®ƒä¹Ÿæ‹¥æœ‰parseã€isBeforeã€è·å–æ—¶é—´å•å…ƒç­‰æ–¹æ³•ï¼Œå°±ä¸å†èµ˜è¿°ã€‚
+		//éœ€è¦æ³¨æ„çš„æ˜¯ï¼ŒLocalTimeè·å¾—çš„æ—¶é—´æ ¼å¼ä¸ºï¼š11:41:58.904ã€‚ä¹Ÿå°±æ˜¯ï¼ŒHH:mm:ss.nnnï¼Œè¿™é‡Œnnnæ˜¯çº³ç§’ã€‚
 	}
 	
 	/**
-	 * »ñÈ¡Ê±¼äÈÕÆÚµÄ×éºÏ
+	 * è·å–æ—¶é—´æ—¥æœŸçš„ç»„åˆ
 	 */
 	public void getDateTime() {
-		//LocalDateTime±íÊ¾ÈÕÆÚºÍÊ±¼ä×éºÏ¡£¿ÉÒÔÍ¨¹ıof()·½·¨Ö±½Ó´´½¨£¬Ò²¿ÉÒÔµ÷ÓÃLocalDateµÄatTime()·½·¨»òLocalTimeµÄatDate()·½·¨½«LocalDate»òLocalTimeºÏ²¢³ÉÒ»¸öLocalDateTime¡£
-		//´´½¨Ê±¼äÊ¾Àı£º
+		//LocalDateTimeè¡¨ç¤ºæ—¥æœŸå’Œæ—¶é—´ç»„åˆã€‚å¯ä»¥é€šè¿‡of()æ–¹æ³•ç›´æ¥åˆ›å»ºï¼Œä¹Ÿå¯ä»¥è°ƒç”¨LocalDateçš„atTime()æ–¹æ³•æˆ–LocalTimeçš„atDate()æ–¹æ³•å°†LocalDateæˆ–LocalTimeåˆå¹¶æˆä¸€ä¸ªLocalDateTimeã€‚
+		//åˆ›å»ºæ—¶é—´ç¤ºä¾‹ï¼š
 		LocalDateTime now = LocalDateTime.now();
 
 		LocalDateTime oneTime = LocalDateTime.of(2019,10,14,10,12,12);
 
-		// Æ´½ÓÈÕÆÚ
+		// æ‹¼æ¥æ—¥æœŸ
 		LocalTime.now().atDate(LocalDate.now());
-		//LocalDateTimeÓëLocalDateºÍLocalTimeÖ®¼ä¿ÉÒÔÏà»¥×ª»¯¡£ÆäËûÈÕÆÚÔö¼õµÈ²Ù×÷ÓëÉÏÃæµÄÀàËÆ¡£
+		//LocalDateTimeä¸LocalDateå’ŒLocalTimeä¹‹é—´å¯ä»¥ç›¸äº’è½¬åŒ–ã€‚å…¶ä»–æ—¥æœŸå¢å‡ç­‰æ“ä½œä¸ä¸Šé¢çš„ç±»ä¼¼ã€‚
 	}
 	
 	/**
-	 * »ñÈ¡Ê±¼ä´Á
+	 * è·å–æ—¶é—´æˆ³
 	 */
 	public void getInstant() {
-		//InstantÓÃÓÚÒ»¸öÊ±¼ä´Á£¬ÓëSystem.currentTimeMillis()ÀàËÆ£¬µ«Instant¿ÉÒÔ¾«È·µ½ÄÉÃë£¨Nano-Second£©¡£
-		//Instant³ıÁË¿ÉÒÔÊ¹ÓÃnow()·½·¨´´½¨£¬»¹¿ÉÒÔÍ¨¹ıofEpochSecond·½·¨´´½¨¡£
+		//Instantç”¨äºä¸€ä¸ªæ—¶é—´æˆ³ï¼Œä¸System.currentTimeMillis()ç±»ä¼¼ï¼Œä½†Instantå¯ä»¥ç²¾ç¡®åˆ°çº³ç§’ï¼ˆNano-Secondï¼‰ã€‚
+		//Instanté™¤äº†å¯ä»¥ä½¿ç”¨now()æ–¹æ³•åˆ›å»ºï¼Œè¿˜å¯ä»¥é€šè¿‡ofEpochSecondæ–¹æ³•åˆ›å»ºã€‚
 		Instant now = Instant.now();
 
 		Instant.ofEpochSecond(365 * 24 * 60, 100);
-		//ÆäÖĞofEpochSecondµÚÒ»¸ö²ÎÊı±íÊ¾Ãë£¬µÚ¶ş¸ö²ÎÊı±íÊ¾ÄÉÃë¡£ÕûÌå±íÊ¾£º´Ó1970-01-01 00:00:00¿ªÊ¼ºóµÄ365Ìì100ÄÉÃëµÄÊ±¼äµã¡£
+		//å…¶ä¸­ofEpochSecondç¬¬ä¸€ä¸ªå‚æ•°è¡¨ç¤ºç§’ï¼Œç¬¬äºŒä¸ªå‚æ•°è¡¨ç¤ºçº³ç§’ã€‚æ•´ä½“è¡¨ç¤ºï¼šä»1970-01-01 00:00:00å¼€å§‹åçš„365å¤©100çº³ç§’çš„æ—¶é—´ç‚¹ã€‚
 	}
 	
 	/**
-	 * »ñÈ¡Ê±¼ä¶Î
+	 * è·å–æ—¶é—´æ®µ
 	 */
 	public void getDuration() {
-		//DurationµÄÄÚ²¿ÊµÏÖÓëInstantÀàËÆ£¬µ«Duration±íÊ¾Ê±¼ä¶Î£¬Í¨¹ıbetween·½·¨´´½¨¡£
+		//Durationçš„å†…éƒ¨å®ç°ä¸Instantç±»ä¼¼ï¼Œä½†Durationè¡¨ç¤ºæ—¶é—´æ®µï¼Œé€šè¿‡betweenæ–¹æ³•åˆ›å»ºã€‚
 		LocalDateTime from = LocalDateTime.now();
 		LocalDateTime to = LocalDateTime.now().plusDays(1);
 		Duration duration = Duration.between(from, to);
 
-		// Çø¼äÍ³¼Æ»»Ëã
-		// ×ÜÌìÊı
+		// åŒºé—´ç»Ÿè®¡æ¢ç®—
+		// æ€»å¤©æ•°
 		long days = duration.toDays();
-		// Ğ¡Ê±Êı
+		// å°æ—¶æ•°
 		long hours = duration.toHours();
-		// ·ÖÖÓÊı
+		// åˆ†é’Ÿæ•°
 		long minutes = duration.toMinutes();
-		// ÃëÊı
+		// ç§’æ•°
 		long seconds = duration.getSeconds();
-		// ºÁÃëÊı
+		// æ¯«ç§’æ•°
 		long milliSeconds = duration.toMillis();
-		// ÄÉÃëÊı
+		// çº³ç§’æ•°
 		long nanoSeconds = duration.toNanos();
-		//Duration¶ÔÏó»¹¿ÉÒÔÍ¨¹ıof()·½·¨´´½¨£¬¸Ã·½·¨²ÎÊıÎªÊ±¼ä¶Î³¤¶ÈºÍÊ±¼äµ¥Î»¡£
-		// 7Ìì
+		//Durationå¯¹è±¡è¿˜å¯ä»¥é€šè¿‡of()æ–¹æ³•åˆ›å»ºï¼Œè¯¥æ–¹æ³•å‚æ•°ä¸ºæ—¶é—´æ®µé•¿åº¦å’Œæ—¶é—´å•ä½ã€‚
+		// 7å¤©
 		Duration duration1 = Duration.of(7, ChronoUnit.DAYS);
-		// 60Ãë
+		// 60ç§’
 		Duration duration2 = Duration.of(60, ChronoUnit.SECONDS);
 	}
 	
 	/**
-	 * »ñÈ¡ÈÕÆÚ¶Î
+	 * è·å–æ—¥æœŸæ®µ
 	 */
 	public void getPeriod() {
-		//PeriodÓëDurationÀàËÆ£¬»ñÈ¡Ò»¸öÊ±¼ä¶Î£¬Ö»²»¹ıµ¥Î»ÎªÄêÔÂÈÕ£¬Ò²¿ÉÒÔÍ¨¹ıof·½·¨ºÍbetween·½·¨´´½¨£¬between·½·¨½ÓÊÕµÄ²ÎÊıÎªLocalDate¡£
+		//Periodä¸Durationç±»ä¼¼ï¼Œè·å–ä¸€ä¸ªæ—¶é—´æ®µï¼Œåªä¸è¿‡å•ä½ä¸ºå¹´æœˆæ—¥ï¼Œä¹Ÿå¯ä»¥é€šè¿‡ofæ–¹æ³•å’Œbetweenæ–¹æ³•åˆ›å»ºï¼Œbetweenæ–¹æ³•æ¥æ”¶çš„å‚æ•°ä¸ºLocalDateã€‚
 		Period period = Period.of(1, 10, 25);
 		Period period1 = Period.between(LocalDate.now(), LocalDate.now().plusYears(1));
 	}
 	
 	/**
-	 * ´´½¨Ê±ÇøÊ±¼ä
+	 * åˆ›å»ºæ—¶åŒºæ—¶é—´
 	 */
 	public void getZonedDateTime() {
-		//onedDateTimeÀà£¬ÓÃÓÚ´¦Àí´øÊ±ÇøµÄÈÕÆÚºÍÊ±¼ä¡£ZoneId±íÊ¾²»Í¬µÄÊ±Çø¡£´óÔ¼ÓĞ40²»Í¬µÄÊ±Çø¡£
-		//»ñÈ¡ËùÓĞÊ±Çø¼¯ºÏ£º
+		//onedDateTimeç±»ï¼Œç”¨äºå¤„ç†å¸¦æ—¶åŒºçš„æ—¥æœŸå’Œæ—¶é—´ã€‚ZoneIdè¡¨ç¤ºä¸åŒçš„æ—¶åŒºã€‚å¤§çº¦æœ‰40ä¸åŒçš„æ—¶åŒºã€‚
+		//è·å–æ‰€æœ‰æ—¶åŒºé›†åˆï¼š
 		Set allZoneIds = ZoneId.getAvailableZoneIds();
-		//´´½¨Ê±Çø£º
+		//åˆ›å»ºæ—¶åŒºï¼š
 		ZoneId zoneId = ZoneId.of("Asia/Shanghai");
-		//°ÑLocalDateTime×ª»»³ÉÌØ¶¨µÄÊ±Çø£º
+		//æŠŠLocalDateTimeè½¬æ¢æˆç‰¹å®šçš„æ—¶åŒºï¼š
 		ZonedDateTime zonedDateTime = ZonedDateTime.of(LocalDateTime.now(), zoneId);
 
-		//ÁíÍâºÍÊ±ÇøÒ»ÆğÊ¹ÓÃµÄÀàÊÇOffsetDateTimeÀà£¬OffsetDateTimeÊÇ²»±äµÄ£¬±íÊ¾date-timeÆ«ÒÆ£¬´æ´¢ËùÓĞÈÕÆÚºÍÊ±¼ä×Ö¶Î£¬¾«È·ÖÁÄÉÃë£¬´ÓUTC/Greenwich¼ÆËãÆ«ÒÆ¡£
+		//å¦å¤–å’Œæ—¶åŒºä¸€èµ·ä½¿ç”¨çš„ç±»æ˜¯OffsetDateTimeç±»ï¼ŒOffsetDateTimeæ˜¯ä¸å˜çš„ï¼Œè¡¨ç¤ºdate-timeåç§»ï¼Œå­˜å‚¨æ‰€æœ‰æ—¥æœŸå’Œæ—¶é—´å­—æ®µï¼Œç²¾ç¡®è‡³çº³ç§’ï¼Œä»UTC/Greenwichè®¡ç®—åç§»ã€‚
 	}
 	
 	/**
-	 * Ê±¼äÈÕÆÚ¸ñÊ½»¯
+	 * æ—¶é—´æ—¥æœŸæ ¼å¼åŒ–
 	 */
 	public void getFormateDate(){
-//		Java8¶ÔÈÕÆÚµÄ¸ñÊ½»¯²Ù×÷·Ç³£¼òµ¥£¬Ê×ÏÈ¿´µ½ÉÏÃæµÄÀà´ó¶à¶¼Ìá¹©ÁËparse·½·¨£¬¿ÉÒÔÖ±½ÓÍ¨¹ı½âÎö×Ö·û´®µÃµ½¶ÔÓ¦µÄ¶ÔÏó¡£
-//		¶øÈÕÆÚºÍÊ±¼äµÄ¸ñÊ½»¯¿ÉÍ¨¹ıLocalDateTimeµÄformat·½·¨½øĞĞ¸ñÊ½»¯¡£
+//		Java8å¯¹æ—¥æœŸçš„æ ¼å¼åŒ–æ“ä½œéå¸¸ç®€å•ï¼Œé¦–å…ˆçœ‹åˆ°ä¸Šé¢çš„ç±»å¤§å¤šéƒ½æä¾›äº†parseæ–¹æ³•ï¼Œå¯ä»¥ç›´æ¥é€šè¿‡è§£æå­—ç¬¦ä¸²å¾—åˆ°å¯¹åº”çš„å¯¹è±¡ã€‚
+//		è€Œæ—¥æœŸå’Œæ—¶é—´çš„æ ¼å¼åŒ–å¯é€šè¿‡LocalDateTimeçš„formatæ–¹æ³•è¿›è¡Œæ ¼å¼åŒ–ã€‚
 		LocalDateTime dateTime = LocalDateTime.now();
 		String str = dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 		System.out.println(str);
 		str = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		System.out.println(str);
-//		¿ÉÒÔÊ¹ÓÃDateTimeFormatterÔ¤ÖÃµÄ¸ñÊ½£¬Ò²¿ÉÒÔÍ¨¹ıDateTimeFormatter.ofPattern·½·¨À´Ö¸¶¨¸ñÊ½¡£
+//		å¯ä»¥ä½¿ç”¨DateTimeFormatteré¢„ç½®çš„æ ¼å¼ï¼Œä¹Ÿå¯ä»¥é€šè¿‡DateTimeFormatter.ofPatternæ–¹æ³•æ¥æŒ‡å®šæ ¼å¼ã€‚
 		
 	}
 	
