@@ -5,6 +5,14 @@ package com.pyw.base.java8;
  * @author ASUS
  *
  */
+@Data
+@NoArgsConstructor
+class User{
+	private  Integer id;
+	private String userName;
+	private int age;
+}
+
 public class StreamDemo {
 
 	public static void main(String[] args) {
