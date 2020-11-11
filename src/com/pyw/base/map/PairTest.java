@@ -21,6 +21,5 @@ public class PairTest {
         System.out.println(pk);
         System.out.println(pn);
         System.out.println(ps);
-
     }
 }
