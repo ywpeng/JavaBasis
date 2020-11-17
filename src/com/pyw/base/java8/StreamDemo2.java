@@ -221,6 +221,7 @@ public class StreamDemo2 {
     public void findFirst(){
         Stream<String> stream = Stream.of("You", "give", "me", "stop");
         String value = stream.findFirst().get();
+
         System.out.println(value);
     }
 
