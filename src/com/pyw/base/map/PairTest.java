@@ -22,9 +22,5 @@ public class PairTest {
         System.out.println(pn);
         System.out.println(ps);
         System.out.println("678");
-
-
-
-
     }
 }
