@@ -33,15 +33,15 @@ public class PostMain {
 //    FileUtil.doPostTest("http://wenshu.court.gov.cn/List/ListContent", params);
 
     public static void main(String[] args) {
-       //1.通过get方式获取首页
-        System.out.println("======== 1.通过get方式获取首页");
-        String vjkl5 = FileUtil.doGetTest("http://wenshu.court.gov.cn/List/List?sorttype=1&conditions=searchWord+1++%E5%88%91%E4%BA%8B%E6%A1%88%E4%BB%B6+%E6%A1%88%E4%BB%B6%E7%B1%BB%E5%9E%8B:%E5%88%91%E4%BA%8B%E6%A1%88%E4%BB%B6");
-        //String vjkl5 = "1be5faca94ffa8ea94013e18d49e1ee114132b89";
-        String vl5x = "e2619bdd804712c572ba24c3";
-        String guid = "4d2df0cf-ff8c-6129c5b9-c6ec231bca5c";
-        //2.获取验证码
-        System.out.println("======== 2.获取验证码");
-        FileUtil.doYzmTest("http://wenshu.court.gov.cn/ValiCode/CreateCode/?guid=" + guid);
+//       //1.通过get方式获取首页
+//        System.out.println("======== 1.通过get方式获取首页");
+//        String vjkl5 = FileUtil.doGetTest("http://wenshu.court.gov.cn/List/List?sorttype=1&conditions=searchWord+1++%E5%88%91%E4%BA%8B%E6%A1%88%E4%BB%B6+%E6%A1%88%E4%BB%B6%E7%B1%BB%E5%9E%8B:%E5%88%91%E4%BA%8B%E6%A1%88%E4%BB%B6");
+//        //String vjkl5 = "1be5faca94ffa8ea94013e18d49e1ee114132b89";
+//        String vl5x = "e2619bdd804712c572ba24c3";
+//        String guid = "4d2df0cf-ff8c-6129c5b9-c6ec231bca5c";
+//        //2.获取验证码
+//        System.out.println("======== 2.获取验证码");
+//        FileUtil.doYzmTest("http://wenshu.court.gov.cn/ValiCode/CreateCode/?guid=" + guid);
 
 //        //3.验证一下呗屏蔽的方法看能不能捡个漏
 //        System.out.println("======== 3.验证一下呗屏蔽的方法看能不能捡个漏");
