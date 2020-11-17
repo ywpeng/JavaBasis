@@ -219,7 +219,7 @@ public class StreamDemo2 {
      * 14.findFirst、findAny
      */
     public void findFirst(){
-        Stream<String> stream = Stream.of("you", "give", "me", "stop");
+        Stream<String> stream = Stream.of("You", "give", "me", "stop");
         String value = stream.findFirst().get();
         System.out.println(value);
     }
