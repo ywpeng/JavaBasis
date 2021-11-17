@@ -1,0 +1,478 @@
+一.安装及说明
+1.windows 版下载地址
+https://dev.mysql.com/downloads/windows/installer/8.0.html
+选择的版本 5.7.28
+
+2.安装过程
+过程参考：
+https://blog.csdn.net/beyond_yanbo/article/details/82457450
+
+1.环境变量设置
+
+安装位置：D:\db\mysql-5.7.28-winx64\bin
+
+2.创建 my.ini 文件，内容参考网页中的明细
+
+3.以管理员身份进入cmd运行安装命令
+
+提示安装成功。
+
+4.查看服务是否安装成功：services.msc ,并将服务改为了手动启动
+
+启动报错：
+
+在网上搜索3534这个错误信息，有人说是从5.7.6开始需要执行mysqld --initialize方法（http://www.mamicode.com/info-detail-1150164.html）。解决方法如下：
+           1） 执行mysqld -remove命令将以前的错误安装删除，否则会提示已经安装
+           2）执行mysqld --initialize命令后再执行mysqld install，再执行net start mysql启动MySQL，一切ok
+修正后的结果：
+
+
+5.修改密码
+此时生成的随机密码在 date文件夹 .err结尾的文件中：
+
+修改密码报错了：
+
+针对以上报错执行如下步骤：
+A.使用管理员身份运行cmd，停止数据库的服务 
+ net stop mysql
+B.启动MySQL服务的时候跳过权限表认证（输入之后不要登陆，另开管理员权限窗口执行C）
+mysqld --skip-grant-tables
+C.用管理员权限窗口，转到mysql\bin目录，输入mysql回车，会进入>Mysql
+mysql
+D.连接权限数据库： use mysql;  （别忘了最后加分号）
+use mysql;
+E.修改密码：
+(是用本命令执行修改密码会报错 ERROR 1054)
+update user set password=password("12345") where user="root"; 
+(正确命令如下)
+update mysql.user set authentication_string=password('root') where user='root' and Host ='localhost';
+F.更新权限:
+flush privileges;
+G.退出
+quit
+H.关闭第一个cmd窗口，新开启服务测试
+net start mysql
+
+至此修改密码成功。
+
+6.使用新密码登陆（设置环境变量后，可直接命令登陆，不需要到bin目录下）、
+mysql -u root -p 
+(然后输入密码，即完成登陆)
+
+ 注意：由于当前设置的密码比较简单，先做下设置，方便后续的使用（本地环境参考处理，生产环境酌情设置）
+validate_password_policy有以下取值：
+
+
+默认是1，即MEDIUM，所以刚开始设置的密码必须符合长度，且必须含有数字，小写或大写字母，特殊字符。
+有时候，只是为了自己测试，不想密码设置得那么复杂，譬如说，我只想设置root的密码为123456。
+
+需按如下方式设置一下：
+A.先改一个符合规则的密码
+B.再降低密码校验规则（该命令本地并未执行成功）
+set global validate_password_policy=0;
+C.再改回简单的那个密码
+
+
+3.客户端安装
+
+
+
+二.常用命令
+1.服务
+启动服务：
+net start mysql
+停止服务：
+net stop mysql
+
+2.管理
+登陆：
+mysql -h主机名 -P端口号 -u用户名 -p密码
+退出：
+exit或Ctrl+c
+
+3.管理员常用命令
+
+4.普通日常命令
+1.查看所有数据库
+show databases;
+2.进入指定数据库
+use test;
+3.查询表清单
+查询当前库的表清单：
+show tablese;
+查询其他库的表清单：
+show tables from TabName;
+查看当前所在数据库
+show database();
+4.查看表信息
+desc TableName;
+5.查看版本
+方式一：登陆到mysql服务器
+select version();
+方式二：没有登录到mysql服务端
+mysql --version
+或
+mysql --V
+6.注释
+单行注释
+#注释内容
+-- 注释内容，注意一定要有空格
+多行注释
+/*注释内容*/
+5.常见函数
+字符函数
+length:注意汉字的长度是3（utf8字符集下）
+upper
+lower
+concat
+substr(str,inx) :对字符串进行截取，从第 inx开始截取，注意索引是从1开始计数
+substr(str,inx,length) :从inx开始截取length 位
+substring 是 substr 的同义词，两个是一样的效果
+instr:返回字符串中第一次出现的索引
+trim：去前后空格
+lpad:用指定的字符左填充长度
+rpad
+replace
+IFNULL(str,val)
+
+数学函数：
+round :四舍五入
+ceil:向上取整
+floor :向下取整
+truncate：截断（保留小数点后几位）
+mod:取余 (a-a/b*b)
+
+日期函数：
+now():当前系统日期+时间
+curdate():返回当前日期，不包含时间
+curtime():返回当前时间，不包含日期
+year()：获取年份； year（now（）） 或 year ('2019-01-01')
+str_to_date:字符串转日期
+date_fromat:将日期转换成字符串
+datediff：获取两个日期相差的天数
+
+其他函数：
+version() 查看版本
+database() 查看当前数据库
+user 查看当前用户
+
+流程控制函数：
+if（str1,str2,str3） 类似三元运算符
+case  when
+
+分组函数： (都会忽略null值)
+sum 
+avg 
+max
+min
+count  （在INNOB存储引擎下，使用count(*) 和count(1)的效率差不多，比count(字段)的效率要高，因为它要判断字段是否为null）
+
+6.连接查询
+按年代分类：
+sql92标准：仅仅支持内连接
+sql99标准：支持内连接+外连接（做外和右外）+交叉连接
+
+按功能分类：
+内连接：（inner 可以省略）
+等值连接：即常用的连接查询，用两表的关联字段作等值连接条件
+select A.clo,B.clo form A,B where A.pid=B.id
+非等值连接：用非等于的条件去做两表的关联条件。例如用工资表和级别表的关联。
+自连接：自己和自己关联查询，例如查员工表的上级名称。
+外连接：（outer 可以省略）
+左外链接：left join
+右外连接:  right join
+全外连接:  full join
+交叉连接：cross join ,即得到笛卡尔积
+
+几种连接的图形表示：
+内连接：
+
+左外连接：
+
+
+右外连接：
+  
+
+全外连接：
+
+
+三.DDL操作
+数据操作
+1.insert
+insert into ..values()  ：支持一次插入多行，且支持子查询 insert .... select ......
+issert into ... set x =x1,x=x2
+
+2.update
+多表关联删除
+
+3.删除
+delete:删除数据，保留结构，可回滚，可以带where 条件
+truncat:数据和结构都删掉了，速度快，无法回滚，不能带where条件
+
+常见操作
+1.创建数据库 
+create database if not exists DBName;
+类似场景的通用写法
+drop database if exists DatabaseName;
+create database NewBaseName;
+
+2.修改库
+alter database books to DBNewName;
+3.更改数据库的字符集
+alter database books character set gbk;
+4.库的删除
+drop database if exists books;
+5.创建表
+略
+6.修改表
+alter table TableNAME add|drop|modify|change column ;
+
+7.表的复制
+A.仅仅复制表的结构
+create table copy Like author;
+B.复制表的结构+数据
+crete table copy2
+select * from author;
+
+8. 字段的类型
+整形：tinyint、smallint、mediumint、int/integer、bigint 
+注意有符号和无符号（unsigned）的区别;超过范围会用临界值标识，或报错（新一点的版本可能会报错，没做测试）；
+int 会有默认的长度，搭配zerofile使用时，左边的位置会用0填充。
+
+浮点型：float、double、decimal(M,d)
+特点：
+M:整数部位+小数部位，D：小数部位
+M和D都可以省略，但不同的类型会有所差异
+
+字符文本：
+     较短的文本：char /varchar
+     较长额的文本：text/blob
+char:固定长度，耗空间、效率略高
+varchar:可变长度，解决空间、效率略低
+
+枚举类型和set类型
+EUMN    SET
+
+时间类型：date、datetime、timestamp、time、year
+datetime:占8个字节，范围 1000-01-01 00:00:00 ，9999-12-31 23:59:59
+timestamp:占4个字节，范围19700101080001,2038年某个时刻
+timestamp和实际时区有关，跟能反映实际的日期，而datetime则只能反映插入时的当地时区；
+timestamp 的属性受MySQL版本和SQLMode的影响很大
+（主动改时区，timestamp中的类型会响应变更）
+
+常见约束（六类）
+A.非空约束：not null
+B.默认约束：default
+C.主键约束：primary key 
+D.检查约束：check(mysql 中不支持)
+E：唯一约束：unique
+F.外键约束：foreign key 
+
+约束的添加分类：
+列级约束：六大约束语法是国内都支持，但外键约束没有效果
+表级约束：初非空、默认外，其他的都支持
+
+标识列：即自增长列。AUTO_INCREMENT
+
+事务支持
+MySQL支持的引擎查看 show engines
+
+MySql 中，使用最多的引擎有：innodb,myisam,memory等。其中innodb支持事务,而myisam/memry 等不支持事务。
+
+事务的特性：ACID.原子性、一致性、隔离性、持久性。
+
+事务的创建：
+隐式事务：事务没有明显的开启和结束标记
+例如  insert/update/delete 语句
+显式事务：事务具有明显的开启和结束的标记
+前提：必须先设置自动提交功能为禁用
+
+显示事务的设置过程：
+可以先查看一下当前的自动提交的设置：SHOW VARIABLES like 'autocommit'
+
+
+ A.设置不自动提交 set autocommit=0，只在一个会话内有效
+B.开启事务 start transaction ,这个语句是可选的，A如果设置里，B默认就会有
+c.编写需要事务控制的语句
+d.结束事务   commit;rollback;
+
+
+事务的隔离机制
+对于多个同时运行的事务，如果没有采取必要的隔离机制，可能会导致的并发问题：脏读、不可重复读、幻读。
+数据库提供的4中事务隔离级别：
+
+
+
+Oracle支持的2种事务隔离级别：read commited/serializable
+Mysql支持4种事务隔离级别。MySQL默认的事务隔离级别：repeatable read
+
+每启动一个mysql程序，就会获得一个单独的数据库连接，每个数据库连接都有一个全局变量@@tx_isolation，表示当前的事务隔离级别。
+查看当前的隔离级别： select @@tx_isolation;
+设置当前mySQL连接的隔离级别： set transaction isolation level read committed;
+设置数据库系统的全局的隔离界别： set global  transaction isolation level read committed;
+
+事务中可配合savepoint使用
+sava point a;
+...
+rollback to a;
+
+四.存储过程和函数
+1.变量
+系统变量
+说明：由系统提供，不是用户定义，属于服务层面
+1.查看所有的系统变量
+show globalsession variables;
+
+2.查看满足条件的某个系统变量
+show globalsession variables like ...;
+
+3.查看某个系统变量的值
+slect @@global.系统变量名
+
+4.为某个系统变量赋值
+set global|session 系统变量名=值;
+set @@global|session .系统变量名=值;
+
+会话变量
+说明：仅针对于当前会话（连接）有效。
+1.查看所有的会话变量
+show session variables;
+
+2.查看部分会话变量
+show session variables like ...;
+
+3.查看指定某个会话变量的值
+select @@session.系统变量名;
+select @@.系统变量名
+
+4.为某个系统变量赋值
+set session 系统变量名=值;
+set @@session .系统变量名=值;
+
+自定义变量
+说明：变量是用户自定义的，不是系统的。
+使用：申明、赋值、使用
+
+用户变量：
+作用域：针对当前会话有效，同于会话变量的作用域。
+A.申明并初始化
+set @用户变量名=值;
+set @@用户变量名:=值;
+select @用户变量名=值;
+
+B.赋值（更新用户变量的值）
+方式一：通过set 或 select
+set @用户变量名=值;
+set @@用户变量名:=值;
+select @用户变量名=值;
+方式二： 通过 select into
+selct 字段 into 变量名  from 表：
+
+C.使用（查看用户变量的值）
+select @用户变量名；
+
+局部变量：
+作用域：仅仅扎起定义它的 begin end 中有效
+应用在 begin end 中的第一句话
+A.声明
+declare 变量名 类型；
+declare 变量名 类型 default 值；、
+
+B.赋值
+通过set 或 select
+set 局部变量名=值;
+set 局部变量名:=值;
+select @局部变量名=值;
+方式二： 通过 select into
+selct 字段 into 局部变量名  from 表：
+
+C.使用
+select 局部变量名；
+
+
+2.存储过程
+含义：一组预先编译好的SQL语句的集合，理解成批处理语句。
+好处：提高了代码的重用性；
+          简化了操作；
+          减少了编译次数并且减少了和数据库服务器的连接次数。
+
+创建语法
+CREATER PROCEDURE 存储过程名(参数列表)
+BEGIN
+存储过程体
+END
+
+1.参数列表包含三部分：
+参数模式 参数名 参数类型
+IN	testPro varchar(20)
+
+参数模式：IN、OUT、INOUT
+
+2.如果存储过程体仅仅只有一句话，BEGIN END 可以省略
+存储过程体中的每条SQL语句的结尾要求必须加分号。
+存储过程的结尾可以使用DELIMITER重新设置。
+
+调用语法
+CALL 存储过程名（实参列表）
+
+DEMO1：
+CREATE PROCEDURE PRO_GET_MASTAR(IN mname VARCHAR(20))
+BEGIN
+ DECLARE outmname VARCHAR(20) ;
+ SELECT mname into outmname from mstar where mstar.mname=mname;
+ SELECT outmname;
+END
+
+
+CALL PRO_GET_MASTAR('周星驰')
+
+
+
+DEMO2：
+CREATE PROCEDURE pro_get_master3(IN age INT ,OUT  outmname VARCHAR(20))
+BEGIN
+ SELECT mname into outmname from mstar where mstar.age=age;
+END
+
+CALL pro_get_master2(55,@oname);
+select @oname;
+
+
+
+3.函数
+存储过程：可以有0个返回，也可以有多个返回；
+函数：有且仅有一个返回。
+
+创建语法
+CREATE FUNCTION 函数名（参数列表）RETURNS 返回类型
+BEGIN 
+函数体
+END
+
+DEMO1：
+CREATE FUNCTION fun_getcount_byage(inage INT) RETURNS INT
+BEGIN
+  DECLARE outcount INT;
+	SELECT COUNT(*) into outcount from mstar where age=inage;
+	RETURN outcount;
+END
+
+
+SELECT fun_getcount_byage(20);
+
+
+
+
+4.流程控制
+分支结构
+IF 、CASE WHEN
+循环结构
+WHILE、REPEAT、LOOP
+
+
+
+
+
+
+
+
